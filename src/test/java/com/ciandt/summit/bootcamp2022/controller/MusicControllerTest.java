@@ -46,14 +46,14 @@ public class MusicControllerTest {
 
         Mockito.when(musicaService.findByNameArtistOrMusic("Teste")).thenReturn(Optional.of(musicaDTO));
 
-        this.mockMvc.perform(get("/musicas?filtro=Teste"))
+        this.mockMvc.perform(get("/music?filtro=Teste"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
     @DisplayName("Busca < 3 caracteres deve retornar BAD REQUEST")
     public void deveRetornarBadRequestAoPesquisarComMenosDeTresCaracteres() throws Exception {
-        this.mockMvc.perform(get("/musicas?filtro=Te"))
+        this.mockMvc.perform(get("/music?filtro=Te"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
@@ -61,7 +61,7 @@ public class MusicControllerTest {
     @DisplayName("Busca sem parâmetro deve retornar BAD REQUEST")
     public void deveRetornarBadRequestAoPesquisarSemParametro() throws Exception {
 
-        this.mockMvc.perform(get("/musicas"))
+        this.mockMvc.perform(get("/music"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
@@ -69,7 +69,7 @@ public class MusicControllerTest {
     @DisplayName("Busca sem resultados deve retornar NO CONTENT")
     public void deveRetornarNoContentAoRetornarResultadoDaPesquisaVazio() throws Exception {
 
-        this.mockMvc.perform(get("/musicas?filtro=TesteTesteTeste"))
+        this.mockMvc.perform(get("/music?filtro=TesteTesteTeste"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
 
     }
@@ -83,7 +83,7 @@ public class MusicControllerTest {
 
         Mockito.when(musicaService.findByNameArtistOrMusic("Teste")).thenReturn(Optional.of(musicaDTO));
 
-        this.mockMvc.perform(get("/musicas?filtro=TESTE"))
+        this.mockMvc.perform(get("/music?filtro=TESTE"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 }

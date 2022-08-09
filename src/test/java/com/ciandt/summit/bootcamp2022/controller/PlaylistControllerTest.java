@@ -69,7 +69,7 @@ public class PlaylistControllerTest {
         when(playlistService.addMusicaToPlaylist("0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88","ed7f6acb-1aad-42c9-8c7b-5a49540fcbc4", musicaDTOAdicionar)).thenReturn(Optional.of(musicaDTOAdicionada));
 
         this.mockMvc.perform(
-                        post("/playlists/1/1/musicas")
+                        post("/playlists/1/1/music")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .content(json))
@@ -100,7 +100,7 @@ public class PlaylistControllerTest {
         when(playlistService.addMusicaToPlaylist("0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88", "ed7f6acb-1aad-42c9-8c7b-5a49540fcbc4", musicaDTO)).thenThrow(new PayloadInvalidoException());
 
         this.mockMvc.perform(
-                        post("/playlists/1/1/musicas")
+                        post("/playlists/1/1/music")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .content(json))
