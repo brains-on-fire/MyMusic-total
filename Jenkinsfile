@@ -11,11 +11,11 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Test') {
-            steps {
-			echo "Test"
-			sh 'mvn test'
-            }
+    stage('Test') {
+        steps {
+        echo "Test"
+        sh 'mvn test'
         }
+    }
     }
 }
